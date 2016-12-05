@@ -41,7 +41,7 @@ value_=[]
 mapper=[]
 for k in range(3):
     for j in range(k+1,len(userid)):
-         key_=userid[k],userid[j]
+         key_=userid[k] + ',' + userid[j]
          a=list(result.loc[result[0] == userid[k],][1])
          a=dict(a[0])
          b=list(result.loc[result[0] == userid[j],][1])
@@ -51,7 +51,12 @@ for k in range(3):
          if len(intersect) == 0:
              value_ = 999
          else:
-             value_=[[a[x] for x in intersect],[b[x] for x in intersect]]
+             value_a= [a[x] for x in intersect]
+             value_b= [b[x] for x in intersect]
+             value_= str(value_a).strip("[]") + '_' + str(value_b).strip('[]')
+
+            #  value_= value_a + '_' + value_b
+
          #print('{0}\t{1}'.format(key_ ,value_) )
          #print('\t')
-         print([key_,value_])
+         print '%s_%s'%(key_,str(value_).replace("'", "").replace(" ", ""))
