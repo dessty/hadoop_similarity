@@ -11,6 +11,8 @@ import pandas as pd
 import numpy as np
 import csv
 
+print '\\**************************\n*\tMAPPER\n**************************\\'
+
 key=[]
 value=[]
 data=[]
