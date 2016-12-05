@@ -14,24 +14,22 @@ import csv
 key=[]
 value=[]
 data=[]
+firsline = True
 
-#for line in sys.stdin:
-with open("ratings.csv") as csvfile:
-    reader = csv.reader(csvfile)
-    firsline = True
-    for line in reader:
-        if firsline:
-            firsline = False
-            continue
-        if key != line[0] or key == None:
-            if value:
-                # print"%s %s\n"%(key, value)
-                data.append([key, value])
-            key = line[0]
-            value = {}
-            value.update({line[1]:line[2]})
-        else:
-            value.update({line[1]:line[2]})
+for line in sys.stdin:
+    line = line.split(",")
+    if firsline:
+        firsline = False
+        continue
+    if key != line[0] or key == None:
+        if value:
+            # print"%s %s\n"%(key, value)
+            data.append([key, value])
+        key = line[0]
+        value = {}
+        value.update({line[1]:line[2]})
+    else:
+        value.update({line[1]:line[2]})
 
 result= pd.DataFrame(data)
 
