@@ -8,10 +8,8 @@ Created on Thu Dec 01 21:00:07 2016
 #!/usr/bin/env python
 import sys
 import pandas as pd
-import numpy as np
 import csv
 
-print '\\**************************\n*\tMAPPER\n**************************\\'
 
 key=[]
 value=[]
@@ -51,7 +49,7 @@ for k in range(3):
          intersect = set(a.keys()).intersection(b.keys())
          intersect = list(intersect)
          if len(intersect) == 0:
-             value_ = 999
+             value_ = '999_999'
          else:
              value_a= [a[x] for x in intersect]
              value_b= [b[x] for x in intersect]
